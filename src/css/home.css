@@ -119,6 +119,11 @@
   line-height: normal;
 }
 
+.homepage .popular-dishes-frame .card .product-badge-wrapper {
+  color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+}
+
 /* .homepage .popular-dishes-frame .card-frame .card .card-frame-img {
   width: 100px;
   height: 100px;
@@ -134,6 +139,18 @@
     ),
     linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 300px);
 } */
+
+.homepage .popular-dishes-frame .card .product-price-box {
+  margin-left: 20px;
+  margin-top: -10px;
+  display: flex;
+  color: #000;
+  font-family: "Work Sans";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
 .homepage .popular-dishes-frame .no-data {
   width: 100%;
@@ -271,7 +288,11 @@
   display: flex;
   overflow: hidden;
   transform: perspective(0px);
-  box-shadow: -3px 0px 20px 14px #34343480;
+  /* box-shadow: -3px 0px 20px 14px #34343480; */
+
+  background: var(--white, #fff);
+  /* shadow-inner */
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
 }
 
 .homepage .ads-frame .ads-video {

@@ -8,7 +8,8 @@ import Typography from "@mui/joy/Typography";
 import CardOverflow from "@mui/joy/CardOverflow";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import Badge from "@mui/joy/Badge";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrievePopularDishes } from "./selector";
@@ -30,7 +31,7 @@ export default function PopularDishes() {
     <div className="popular-dishes-frame">
       <Container>
         <Stack className="popular-section">
-          <Box className="category-title">Top sneakers</Box>
+          <Box className="category-title">Top Sneakers</Box>
           <Stack className="cards-frame">
             {popularDishes.length !== 0 ? (
               popularDishes.map((product: Product) => {
@@ -67,15 +68,34 @@ export default function PopularDishes() {
                           <Typography
                             sx={{
                               fontWeight: "md",
-                              color: "neutral.300",
+                              color: "#000",
                               alignItems: "center",
                               display: "flex",
                             }}
                           >
-                            {product.productViews}
+                            <Badge
+                              sx={{
+                                "& .MuiBadge-badge": {
+                                  background: "#414A4C",
+                                  color: "#fff",
+                                  fontSize: "10px",
+                                  minWidth: "18px",
+                                  height: "18px",
+                                  borderRadius: "9px",
+
+                                  right: "-2px",
+                                },
+                              }}
+                              badgeContent={product?.productViews ?? 0}
+                              // color="primary"
+                            >
+                              <VisibilityIcon sx={{ fontSize: 25 }} />
+                            </Badge>
+
+                            {/* {product.productViews}
                             <VisibilityIcon
                               sx={{ fontSize: 25, marginLeft: "5px" }}
-                            />
+                            /> */}
                           </Typography>
                         </Stack>
                       </CardContent>
@@ -88,11 +108,11 @@ export default function PopularDishes() {
                           height: "60px",
                         }}
                       >
-                        <Typography
-                          startDecorator={<DescriptionOutlinedIcon />}
-                          textColor="neutral.300"
-                        >
-                          {product.productDesc}
+                        <Typography>
+                          {" "}
+                          <Box className="product-price-box">
+                            ${product.productPrice}
+                          </Box>{" "}
                         </Typography>
                       </CardOverflow>
                     </Card>

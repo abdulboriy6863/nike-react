@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Tin';
+    src: url('tin-webfont.eot');
+    src: url('tin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('tin-webfont.woff2') format('woff2'),
+         url('tin-webfont.woff') format('woff'),
+         url('tin-webfont.ttf') format('truetype'),
+         url('tin-webfont.svg#tinregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tin';
+    src: url('tinbol-webfont.eot');
+    src: url('tinbol-webfont.eot?#iefix') format('embedded-opentype'),
+         url('tinbol-webfont.woff2') format('woff2'),
+         url('tinbol-webfont.woff') format('woff'),
+         url('tinbol-webfont.ttf') format('truetype'),
+         url('tinbol-webfont.svg#tinbold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tin';
+    src: url('tinlig-webfont.eot');
+    src: url('tinlig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('tinlig-webfont.woff2') format('woff2'),
+         url('tinlig-webfont.woff') format('woff'),
+         url('tinlig-webfont.ttf') format('truetype'),
+         url('tinlig-webfont.svg#tinlight') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
