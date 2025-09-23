@@ -5,7 +5,7 @@ import { create } from "domain";
 const initialState: HomePageState = {
   popularDishes: [],
   newDishes: [],
-  topUsers: [],
+  topSellingProducts: [],
 };
 
 const homePageSlice = createSlice({
@@ -18,12 +18,12 @@ const homePageSlice = createSlice({
     setNewDishes: (state, action) => {
       state.newDishes = action.payload;
     },
-    setTopUsers: (state, action) => {
-      state.topUsers = action.payload;
+    setTopProducts: (state, action) => {
+      state.topSellingProducts = action.payload;
     },
   },
 });
-export const { setPopularDishes, setNewDishes, setTopUsers } =
+export const { setPopularDishes, setNewDishes, setTopProducts } =
   homePageSlice.actions;
 
 const HomePageReducer = homePageSlice.reducer;

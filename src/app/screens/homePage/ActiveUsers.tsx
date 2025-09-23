@@ -10,35 +10,38 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrieveTopUsers } from "./selector";
+import { retriveTopSellingProducts } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
 import { Member } from "../../../lib/types/member";
 
 // redux slice & selector
 
-const topUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({
-  topUsers,
-}));
+const topUsersRetriever = createSelector(
+  retriveTopSellingProducts,
+  (topSellingProducts) => ({
+    topSellingProducts,
+  })
+);
 
 export default function ActiveUsers() {
-  const { topUsers } = useSelector(topUsersRetriever);
-  console.log("popularDishes", topUsers);
+  const { topSellingProducts } = useSelector(topUsersRetriever);
+  console.log("popularDishes", topSellingProducts);
 
   return (
     <div>
       <Container>
         <Stack className="users-frame">
-          <Box className="user-title">Active User</Box>
+          <Box className="user-title">Top Sell Products</Box>
           <Stack className="user-img-card">
             <CssVarsProvider>
-              {topUsers.length !== 0 ? (
-                topUsers.map((member: Member) => {
-                  const imagePath = `${serverApi}/${member.memberImage}`;
+              {topSellingProducts.length !== 0 ? (
+                topSellingProducts.map((products: Product) => {
+                  const imagePath = `${serverApi}/${products.productImages}`;
 
                   return (
                     <Card
-                      key={member._id}
+                      key={products._id}
                       variant="outlined"
                       className={"card"}
                     >
@@ -53,7 +56,7 @@ export default function ActiveUsers() {
                       >
                         <Stack className="user-nick">
                           <Typography className={"title"}>
-                            {member.memberNick}
+                            {products.productName}
                           </Typography>
                         </Stack>
                       </CardOverflow>
@@ -61,7 +64,7 @@ export default function ActiveUsers() {
                   );
                 })
               ) : (
-                <Box className="no-data">New products are not available</Box>
+                <Box className="no-data">No Top Selling Products</Box>
               )}
             </CssVarsProvider>
           </Stack>

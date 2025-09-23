@@ -28,8 +28,39 @@ export default function NewDishes() {
   return (
     <div className="new-dishes-frame">
       <Container>
-        <Stack className={"main"}>
-          <Box className={"category-title"}>Fresh Menu</Box>
+        <Stack className="main">
+          <Box className={"category-title"}>Shop By Collection</Box>
+          <Stack className="card-frame">
+            <CssVarsProvider>
+              <Box className="card-1-img">
+                <div className="card-img-text">
+                  <Box className="collection-name">Women</Box>
+                  <Box className="collection-link">
+                    <img src="/icons/nike-group59.svg" alt="" />
+                  </Box>
+                </div>
+              </Box>
+              <Box className="card-2-img">
+                <div className="card-img-text">
+                  <Box className="collection-name">Mens</Box>
+                  <Box className="collection-link">
+                    <img src="/icons/nike-group59.svg" alt="" />
+                  </Box>
+                </div>
+              </Box>
+              <Box className="card-3-img">
+                <div className="card-img-text">
+                  <Box className="collection-name">Kids</Box>
+                  <Box className="collection-link">
+                    <img src="/icons/nike-group59.svg" alt="" />
+                  </Box>
+                </div>
+              </Box>
+            </CssVarsProvider>
+          </Stack>
+        </Stack>
+        {/* <Stack className={"main"}>
+          <Box className={"category-title"}>Shop By Collection</Box>
           <Stack className={"card-frame"}>
             <CssVarsProvider>
               {newDishes.length !== 0 ? (
@@ -94,7 +125,7 @@ export default function NewDishes() {
               )}
             </CssVarsProvider>
           </Stack>
-        </Stack>
+        </Stack> */}
       </Container>
     </div>
   );

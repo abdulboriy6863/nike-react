@@ -176,16 +176,9 @@
 .homepage .new-dishes-frame {
   margin-top: 90px;
   width: 100%;
-  height: 605px;
+  height: 650px;
   /* background: rgb(248, 248, 255); */
   display: flex;
-
-  /* background: linear-gradient(
-    180deg,
-    #fff6da 30.21%,
-    rgba(255, 246, 218, 0) 100%
-  );
-  background-size: cover; */
 }
 
 .homepage .main {
@@ -196,24 +189,85 @@
 }
 
 .homepage .new-dishes-frame .category-title {
-  font-family: "Dancing Script";
-  font-style: normal;
-  font-weight: 700;
+  text-align: center;
+  font-family: "Roboto Serif";
   font-size: 36px;
-  line-height: 43px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1.44px;
+  color: #000;
 }
 
 .homepage .new-dishes-frame .main .card-frame {
   width: 100%;
   margin: 47px 2px 2px 2px;
+  display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  height: 618px;
 }
 
-.homepage .new-dishes-frame .main .card {
-  height: 335px;
-  width: 290px;
+.homepage .new-dishes-frame .main .card-frame .card-1-img {
+  width: 440px;
+  height: 600px;
   cursor: pointer;
+
+  background: url("/public/img/nike-categoriy1.png") lightgray 50% / cover
+    no-repeat;
+}
+
+.homepage .new-dishes-frame .main .card-frame .card-2-img {
+  width: 440px;
+  height: 600px;
+  cursor: pointer;
+
+  background: url("/public/img/nike-categiry2.png") lightgray 50% / cover
+    no-repeat;
+}
+
+.homepage .new-dishes-frame .main .card-frame .card-3-img {
+  width: 440px;
+  height: 600px;
+  cursor: pointer;
+
+  background: url("/public/img/nike-category3.png") lightgray 50% / cover
+    no-repeat;
+}
+
+.homepage .new-dishes-frame .main .card-img-text {
+  margin-top: 115%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 100px;
+}
+
+.homepage .new-dishes-frame .card-img-text .collection-name {
+  width: 120px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #151414;
+  font-family: "DM Sans";
+  border-radius: 9px;
+
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: #fff;
+}
+
+.homepage .new-dishes-frame .card-img-text .collection-link {
+  width: 55px;
+  height: 52.904px;
+  cursor: pointer;
+  border-radius: 35px;
+  background: #fff;
 }
 
 .homepage .new-dishes-frame .product-sale {
@@ -282,16 +336,14 @@
 
 /* ADVERTISMENT */
 .homepage .ads-frame {
-  margin-top: 50px;
+  margin-top: 100px;
   width: 100%;
   height: 690px;
   display: flex;
   overflow: hidden;
   transform: perspective(0px);
-  /* box-shadow: -3px 0px 20px 14px #34343480; */
 
   background: var(--white, #fff);
-  /* shadow-inner */
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
 }
 
@@ -317,13 +369,14 @@
 }
 
 .homepage .users-frame .user-title {
+  text-align: center;
   font-family: "Roboto Serif";
   font-size: 36px;
+  font-style: normal;
   font-weight: 600;
-  line-height: 42px;
-  letter-spacing: 0%;
-  text-align: left;
-  color: rgb(52, 52, 52);
+  line-height: normal;
+  letter-spacing: 1.44px;
+  color: #000;
 }
 
 .homepage .users-frame .user-img-card {

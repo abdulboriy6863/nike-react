@@ -1,4 +1,5 @@
 import React from "react";
+
 export default function Advertisement() {
   return (
     <div className="ads-frame">
@@ -10,7 +11,10 @@ export default function Advertisement() {
         playsInline
         data-video-media
       >
-        <source type="video/mp4" src="video/nike_ads.mp4" />
+        <source
+          type="video/mp4"
+          src="https://www.shutterstock.com/shutterstock/videos/3641098169/preview/stock-footage-fiumicino-rome-italy-september-view-of-the-large-shelves-full-of-boxes-displaying-the.webm"
+        />
       </video>
     </div>
   );

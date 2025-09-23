@@ -9,7 +9,7 @@ import "../../../css/home.css";
 
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setNewDishes, setPopularDishes, setTopUsers } from "./slice";
+import { setNewDishes, setPopularDishes, setTopProducts } from "./slice";
 import { Product } from "../../../lib/types/product";
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
@@ -21,11 +21,11 @@ import { Member } from "../../../lib/types/member";
 const actionDispatch = (dispatch: Dispatch) => ({
   setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
   setNewDishes: (data: Product[]) => dispatch(setNewDishes(data)),
-  setTopUsers: (data: Member[]) => dispatch(setTopUsers(data)),
+  setTopProducts: (data: Product[]) => dispatch(setTopProducts(data)),
 });
 
 export default function HomePage() {
-  const { setPopularDishes, setNewDishes, setTopUsers } = actionDispatch(
+  const { setPopularDishes, setNewDishes, setTopProducts } = actionDispatch(
     useDispatch()
   );
   // selector: store => date
@@ -54,13 +54,23 @@ export default function HomePage() {
         setNewDishes(data);
       });
 
-    const member = new MemberService();
-    member
-      .getTopUsers()
-      .then((data) => {
-        setTopUsers(data);
+    product
+      .getTopProducts({
+        page: 1,
+        limit: 4,
+        order: "createdAt",
       })
-      .catch((err) => console.log(err));
+      .then((data) => {
+        setTopProducts(data);
+      });
+
+    // const member = new MemberService();
+    // member
+    //   .getTopUsers()
+    //   .then((data) => {
+    //     setTopUsers(data);
+    //   })
+    //   .catch((err) => console.log(err));
   }, []);
   //backend server data
 
@@ -68,8 +78,10 @@ export default function HomePage() {
     <div className="homepage">
       <Statistics />
       <div className="homepage-bgcolor">
-        <PopularDishes />
-        <NewDishes />
+        <div className="background-brand-svg">
+          <PopularDishes />
+          <NewDishes />
+        </div>
         <Advertisement />
         <ActiveUsers />
         <Events />

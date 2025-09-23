@@ -37,6 +37,22 @@ class ProductService {
       throw err;
     }
   }
+
+  public async getTopProducts(input: ProductInquiry): Promise<Product[]> {
+    try {
+      let url = `${this.path}/product/topSellingProduct?order=${input.order}&page=${input.page}&limit=${input.limit}`;
+      if (input.productCollection)
+        url += `&productCollection=${input.productCollection}`;
+      if (input.search) url += `&search=${input.search}`;
+
+      const result = await axios.get(url);
+      console.log("getProducts:", result);
+      return result.data;
+    } catch (err) {
+      console.log("error, getProudct:", err);
+      throw err;
+    }
+  }
 }
 
 export default ProductService;
