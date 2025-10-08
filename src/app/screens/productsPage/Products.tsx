@@ -13,7 +13,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import Pagination from "@mui/material/Pagination";
-
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setProducts } from "./slice";
@@ -48,13 +48,39 @@ export default function Products(props: ProductsProps) {
   const { products } = useSelector(productsRetriever);
   const [productSearch, setProductSearch] = useState<ProductInquiry>({
     page: 1,
-    limit: 2,
+    limit: 8,
     order: "createdAt",
     productCollection: ProductCollection.DISH,
     search: "",
   });
 
   const history = useHistory();
+
+  const location = useLocation();
+  //
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const collectionParam = query.get("collection") as ProductCollection;
+
+    if (collectionParam) {
+      setProductSearch((prev) => ({
+        ...prev,
+        page: 1,
+        productCollection: collectionParam,
+      }));
+    }
+  }, [location.search]); // ✅ faqat bitta useEffect kifoya
+
+  useEffect(() => {
+    const product = new ProductService();
+    product
+      .getProducts(productSearch)
+      .then((data) => setProducts(data))
+      .catch((err) => console.log(err));
+  }, [productSearch]); // ✅ doim filter bo‘yicha so‘rov ketadi
+
+  ///
 
   const [searchText, setSearchtext] = useState<string>("");
 
@@ -98,6 +124,7 @@ export default function Products(props: ProductsProps) {
 
   const chooseDishHandler = (id: string) => {
     history.push(`/products/${id}`);
+    //===================
   };
 
   return (
@@ -216,7 +243,7 @@ export default function Products(props: ProductsProps) {
                 >
                   Drink{" "}
                 </Button>
-                <Button
+                {/* <Button
                   variant="contained"
                   color={
                     productSearch.productCollection ===
@@ -230,9 +257,9 @@ export default function Products(props: ProductsProps) {
                   }
                 >
                   Desert
-                </Button>
+                </Button> */}
 
-                <Button
+                {/* <Button
                   variant="contained"
                   color={
                     productSearch.productCollection === ProductCollection.OTHER
@@ -245,7 +272,7 @@ export default function Products(props: ProductsProps) {
                   }
                 >
                   Other
-                </Button>
+                </Button> */}
               </Stack>
               <Stack className="wrap-box">
                 {products.length !== 0 ? (

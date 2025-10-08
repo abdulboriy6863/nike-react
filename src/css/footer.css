@@ -1,4 +1,44 @@
-.foot-desc-txt {
+.contenor-1 {
+  width: 90px;
+  /* height: 130px; */
+
+  /* color: #fff;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; */
+
+  color: #fc6b3f;
+  text-align: center;
+  font-family: "DM Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.contenor-2 {
+  width: 550px;
+  /* height: 250px; */
+  flex-shrink: 0;
+}
+
+.contenor-3 {
+  width: 90px;
+  /* height: 130px; */
+
+  color: #fff;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* .foot-desc-txt {
   margin-top: 22px;
   font-family: "Poppins";
   font-style: normal;
@@ -91,4 +131,4 @@
 
 .foot-category-title:hover:after {
   transform: scaleX(1);
-}
+} */

@@ -5,9 +5,9 @@ import styled from "styled-components";
 
 const Footers = styled.div`
   width: 100%;
-  height: 590px;
+  height: 400px;
   display: flex;
-  background: #343434;
+  background: #262525;
   background-size: cover;
 `;
 
@@ -17,7 +17,40 @@ export default function Footer() {
   return (
     <Footers>
       <Container>
-        <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
+        <Stack
+          flexDirection={"row"}
+          justifyContent={"space-between"}
+          sx={{ mt: "94px" }}
+        >
+          <Stack
+            className="contenor-1"
+            flexDirection={"column"}
+            style={{ width: "340px" }}
+          >
+            {" "}
+            <p>ALL</p>
+            <p>WOMEN</p>
+            <p>MEN</p>
+          </Stack>
+          <Stack
+            className="contenor-2"
+            flexDirection={"column"}
+            style={{ width: "340px" }}
+          >
+            <img src="/img/nike-brand-logo.png" alt="" />
+          </Stack>
+          <Stack
+            className="contenor-3"
+            flexDirection={"column"}
+            style={{ width: "340px" }}
+          >
+            {" "}
+            <p>KIDS</p>
+            <p>NEW</p>
+            <p>PRICES</p>
+          </Stack>
+        </Stack>
+        {/* <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
               <img width={"100px"} src={"/icons/burak.svg"} />
@@ -82,7 +115,7 @@ export default function Footer() {
         ></Stack>
         <Stack className={"copyright-txt"}>
           © Copyright Devex Global, All rights reserved.
-        </Stack>
+        </Stack> */}
       </Container>
     </Footers>
   );

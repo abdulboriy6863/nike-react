@@ -12,29 +12,37 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Badge from "@mui/joy/Badge";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrievePopularDishes } from "./selector";
+import { retrieveNewDishes, retrievePopularDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
 
 //REDUX SELECTOR
-const popularDishesRetriver = createSelector(
-  retrievePopularDishes,
-  (popularDishes) => ({ popularDishes })
-);
+// const popularDishesRetriver = createSelector(
+//   retrievePopularDishes,
+//   (popularDishes) => ({ popularDishes })
+// );
 
-export default function PopularDishes() {
-  const { popularDishes } = useSelector(popularDishesRetriver);
+// export default function PopularDishes() {
+//   const { popularDishes } = useSelector(popularDishesRetriver);
+
+const newrDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({
+  newDishes,
+}));
+
+export default function NewDishes() {
+  const { newDishes } = useSelector(newrDishesRetriever);
+  console.log("newDishes::::::", newDishes);
 
   return (
     <div className="popular-dishes-frame">
       <Container>
         <Stack className="popular-section">
-          <Box className="category-title">Top Sneakers</Box>
+          <Box className="category-title">New Sneakers</Box>
           <Stack className="cards-frame">
-            {popularDishes.length !== 0 ? (
-              popularDishes.map((product: Product) => {
+            {newDishes.length !== 0 ? (
+              newDishes.map((product: Product) => {
                 const imagePath = `${serverApi}/${product.productImages[0]}`;
 
                 return (
