@@ -14,10 +14,12 @@ import { retriveTopSellingProducts } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
 import { Member } from "../../../lib/types/member";
+import TextRating from "../../components/textRating";
+import SoldCountRating from "../../components/textRating";
 
 // redux slice & selector
 
-const topUsersRetriever = createSelector(
+const topSellingRetriever = createSelector(
   retriveTopSellingProducts,
   (topSellingProducts) => ({
     topSellingProducts,
@@ -25,7 +27,7 @@ const topUsersRetriever = createSelector(
 );
 
 export default function ActiveUsers() {
-  const { topSellingProducts } = useSelector(topUsersRetriever);
+  const { topSellingProducts } = useSelector(topSellingRetriever);
   console.log("popularDishes", topSellingProducts);
 
   return (
@@ -50,10 +52,22 @@ export default function ActiveUsers() {
                             alt=""
                           />
                         </CardCover>
-                        <Box className="user-nick">
-                          {" "}
-                          This is a {products.productName}
+
+                        <Box className="product-sold-count">
+                          Sold Count
+                          <span className="extra-design">
+                            {products.soldCount}
+                          </span>
                         </Box>
+                        {/* <Box className="product-rating">
+                          {" "}
+                          <TextRating soldCount={products.soldCount} />
+                        </Box> */}
+                        {/* <Box className="product-rating">
+                          <SoldCountRating soldCount={products.soldCount} />
+                        </Box> */}
+
+                        <Box className="user-nick">{products.productName}</Box>
                       </Card>
                     </CssVarsProvider>
                   </Stack>
