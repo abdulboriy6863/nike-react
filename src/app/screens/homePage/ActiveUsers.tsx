@@ -34,39 +34,56 @@ export default function ActiveUsers() {
         <Stack className="users-frame">
           <Box className="user-title">Top Sell Products</Box>
           <Stack className="user-img-card">
-            <CssVarsProvider>
-              {topSellingProducts.length !== 0 ? (
-                topSellingProducts.map((products: Product) => {
-                  const imagePath = `${serverApi}/${products.productImages}`;
+            {/* <CssVarsProvider> */}
+            {topSellingProducts.length !== 0 ? (
+              topSellingProducts.map((products: Product) => {
+                const imagePath = `${serverApi}/${products.productImages}`;
 
-                  return (
-                    <Card
-                      key={products._id}
-                      variant="outlined"
-                      className={"card"}
-                    >
-                      <CardOverflow>
-                        <AspectRatio ratio="1">
-                          <img src={imagePath} />
-                        </AspectRatio>
-                      </CardOverflow>
-                      <CardOverflow
-                        variant="soft"
-                        className={"product-details"}
-                      >
-                        <Stack className="user-nick">
-                          <Typography className={"title"}>
-                            {products.productName}
-                          </Typography>
-                        </Stack>
-                      </CardOverflow>
-                    </Card>
-                  );
-                })
-              ) : (
-                <Box className="no-data">No Top Selling Products</Box>
-              )}
-            </CssVarsProvider>
+                return (
+                  <Stack>
+                    <CssVarsProvider key={products._id}>
+                      <Card className={"card"}>
+                        <CardCover>
+                          <img
+                            className="active-product-img"
+                            src={imagePath}
+                            alt=""
+                          />
+                        </CardCover>
+                        <Box className="user-nick">
+                          {" "}
+                          This is a {products.productName}
+                        </Box>
+                      </Card>
+                    </CssVarsProvider>
+                  </Stack>
+                  // <Card
+                  //   key={products._id}
+                  //   variant="outlined"
+                  //   className={"card"}
+                  // >
+                  //   <CardOverflow>
+                  //     <AspectRatio ratio="1">
+                  //       <img src={imagePath} />
+                  //     </AspectRatio>
+                  //   </CardOverflow>
+                  //   <CardOverflow
+                  //     variant="soft"
+                  //     className={"product-details"}
+                  //   >
+                  //     <Stack className="user-nick">
+                  //       <Typography className={"title"}>
+                  //         {products.productName}
+                  //       </Typography>
+                  //     </Stack>
+                  //   </CardOverflow>
+                  // </Card>
+                );
+              })
+            ) : (
+              <Box className="no-data">No Top Selling Products</Box>
+            )}
+            {/* </CssVarsProvider> */}
           </Stack>
         </Stack>
       </Container>
