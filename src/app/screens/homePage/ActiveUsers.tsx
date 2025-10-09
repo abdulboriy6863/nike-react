@@ -1,20 +1,14 @@
 import React from "react";
-import { Box, Container, Divider, Stack } from "@mui/material";
-import { AspectRatio, CardOverflow, CssVarsProvider } from "@mui/joy";
+import { Box, Container, Stack } from "@mui/material";
+import { CssVarsProvider } from "@mui/joy";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
-import CardContent from "@mui/joy/CardContent";
-import Typography from "@mui/joy/Typography";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retriveTopSellingProducts } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
-import { Member } from "../../../lib/types/member";
-import TextRating from "../../components/textRating";
 import SoldCountRating from "../../components/textRating";
 
 // redux slice & selector
@@ -42,9 +36,12 @@ export default function ActiveUsers() {
                 const imagePath = `${serverApi}/${products.productImages}`;
 
                 return (
-                  <Stack>
-                    <CssVarsProvider key={products._id}>
+                  <Stack key={products._id}>
+                    <CssVarsProvider>
                       <Card className={"card"}>
+                        {/* <Box className="card-brand-name">
+                          <img src="/img/NIKE.png" alt="" />
+                        </Box> */}
                         <CardCover>
                           <img
                             className="active-product-img"
@@ -53,21 +50,17 @@ export default function ActiveUsers() {
                           />
                         </CardCover>
 
-                        <Box className="product-sold-count">
-                          Sold Count
-                          <span className="extra-design">
-                            {products.soldCount}
-                          </span>
-                        </Box>
-                        {/* <Box className="product-rating">
-                          {" "}
-                          <TextRating soldCount={products.soldCount} />
-                        </Box> */}
-                        {/* <Box className="product-rating">
-                          <SoldCountRating soldCount={products.soldCount} />
-                        </Box> */}
-
-                        <Box className="user-nick">{products.productName}</Box>
+                        <Stack className="button-category">
+                          <Box className="user-nick">
+                            {products.productName}
+                          </Box>
+                          <Box className="product-sold-count">
+                            Sold count&nbsp;
+                            <span className="extra-design">
+                              ({products.soldCount})
+                            </span>
+                          </Box>
+                        </Stack>
                       </Card>
                     </CssVarsProvider>
                   </Stack>

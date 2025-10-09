@@ -5,7 +5,7 @@ export const plans = [
     author: "Chef Deming",
     date: "30 min ago",
     location: "Turkey, Istambul",
-    img: "https://www.shutterstock.com/shutterstock/videos/3641098169/preview/stock-footage-fiumicino-rome-italy-september-view-of-the-large-shelves-full-of-boxes-displaying-the.webm",
+    img: "/img/nike-event9.jpg",
   },
   {
     title: "Coming Soon",
@@ -13,7 +13,7 @@ export const plans = [
     author: "Belissimo Arthur",
     date: "2 days ago",
     location: "Turkey, Istambul",
-    img: "https://www.shutterstock.com/shutterstock/videos/3500155817/preview/stock-footage-miami-fl-usa-may-nike-shoes-hanging-from-a-power-line-on-blue-sky.webm",
+    img: "/img/nike-event12.webp",
   },
   {
     title: "New Project Lunch",
@@ -21,7 +21,7 @@ export const plans = [
     author: "Morgan News",
     date: "5 days ago",
     location: "USA, Florida",
-    img: "/img/coming.webp",
+    img: "/img/nike-event12.jpeg",
   },
   {
     title: "Join us on sns",
@@ -29,6 +29,6 @@ export const plans = [
     author: "Belissimo Agent",
     date: "A week ago",
     location: "Europe, France",
-    img: "/img/food-city.webp",
+    img: "img/nike-event10.jpg",
   },
 ];

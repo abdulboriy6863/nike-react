@@ -1,41 +1,35 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
+// src/components/SoldCountRating.tsx
+
+import React from "react";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 
-// label uchun mapping
-const labels: { [index: number]: string } = {
-  1: "Yomon",
-  2: "Qoniqarli",
-  3: "O‘rtacha",
-  4: "Yaxshi",
-  5: "Zo‘r",
-};
-
-function getRatingFromSoldCount(soldCount: number): number {
-  if (soldCount >= 400) return 5;
-  if (soldCount >= 300) return 4;
-  if (soldCount >= 200) return 3;
-  if (soldCount >= 100) return 2;
-  if (soldCount > 0) return 1;
-  return 0; // hali sotilmagan
+interface Props {
+  soldCount: number;
 }
 
-export default function SoldCountRating({ soldCount }: { soldCount: number }) {
-  const ratingValue = getRatingFromSoldCount(soldCount);
+export default function SoldCountRating({ soldCount }: Props) {
+  // Mantiq: soldCount asosida 0 dan 5 gacha baho
+  const calculateRating = (count: number): number => {
+    if (count >= 100) return 5;
+    if (count >= 75) return 4.5;
+    if (count >= 50) return 4;
+    if (count >= 25) return 3.5;
+    if (count >= 10) return 3;
+    if (count >= 5) return 2;
+    if (count > 0) return 1;
+    return 0;
+  };
+
+  const value = calculateRating(soldCount);
 
   return (
-    <Box sx={{ width: 200, display: "flex", alignItems: "center" }}>
-      <Rating
-        name="soldcount-rating"
-        value={ratingValue}
-        readOnly
-        precision={1}
-        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-      />
-      <Box sx={{ ml: 2 }}>
-        {ratingValue > 0 ? labels[ratingValue] : "Hali sotilmagan"}
-      </Box>
-    </Box>
+    <Rating
+      name="read-only"
+      value={value}
+      precision={0.5}
+      readOnly
+      emptyIcon={<StarIcon style={{ opacity: 0.4 }} fontSize="inherit" />}
+    />
   );
 }

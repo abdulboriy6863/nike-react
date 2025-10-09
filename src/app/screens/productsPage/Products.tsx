@@ -1,14 +1,5 @@
 import * as React from "react";
-import {
-  Badge,
-  Box,
-  Button,
-  colors,
-  Container,
-  Input,
-  PaginationItem,
-  Stack,
-} from "@mui/material";
+import { Badge, Box, Button, Container, Input, Stack } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
@@ -24,7 +15,6 @@ import { useEffect, useState } from "react";
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
-import { ArrowBack } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 
@@ -42,43 +32,32 @@ interface ProductsProps {
   onAdd: (item: CartItem) => void;
 }
 
+interface CollectionState {
+  collection?: ProductCollection;
+}
+
 export default function Products(props: ProductsProps) {
   const { onAdd } = props;
   const { setProducts } = actionDispatch(useDispatch());
   const { products } = useSelector(productsRetriever);
+  const location = useLocation<CollectionState>();
+
+  const initialCollection =
+    (location.state?.collection as ProductCollection) || ProductCollection.DISH;
+  const [collection, setCollection] =
+    useState<ProductCollection>(initialCollection);
+
   const [productSearch, setProductSearch] = useState<ProductInquiry>({
     page: 1,
     limit: 8,
     order: "createdAt",
-    productCollection: ProductCollection.DISH,
+    productCollection: collection,
     search: "",
   });
 
   const history = useHistory();
 
-  const location = useLocation();
   //
-
-  useEffect(() => {
-    const query = new URLSearchParams(location.search);
-    const collectionParam = query.get("collection") as ProductCollection;
-
-    if (collectionParam) {
-      setProductSearch((prev) => ({
-        ...prev,
-        page: 1,
-        productCollection: collectionParam,
-      }));
-    }
-  }, [location.search]); // ✅ faqat bitta useEffect kifoya
-
-  useEffect(() => {
-    const product = new ProductService();
-    product
-      .getProducts(productSearch)
-      .then((data) => setProducts(data))
-      .catch((err) => console.log(err));
-  }, [productSearch]); // ✅ doim filter bo‘yicha so‘rov ketadi
 
   ///
 
@@ -351,7 +330,7 @@ export default function Products(props: ProductsProps) {
           <Stack spacing={2} className="pagination">
             <Pagination
               count={
-                products.length != 0
+                products.length !== 0
                   ? productSearch.page + 1
                   : productSearch.page
               }

@@ -48,4 +48,6 @@ class Test extends Component {
   }
 }
 
+// "swiper": "^8.3.1",
+
 export default Test;

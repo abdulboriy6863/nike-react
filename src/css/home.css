@@ -231,8 +231,8 @@
   height: 600px;
   cursor: pointer;
 
-  background: url("/public/img/nike-category3.png") lightgray 50% / cover
-    no-repeat;
+  background: url("/public/img/nike-category3.png") rgb(255, 253, 253) 50% /
+    cover no-repeat;
 }
 
 .homepage .new-dishes-frame .main .card-img-text {
@@ -335,7 +335,38 @@
 }
 
 /* ADVERTISMENT */
-.homepage .ads-frame {
+
+.homepage .ads-frame .my-swiper {
+  margin-top: 150px;
+  width: 100%;
+  height: 690px;
+
+  overflow: hidden;
+  transform: perspective(0px);
+}
+
+.homepage .ads-frame .ads-main .my-swiper {
+  text-align: center;
+  /* font-size: 18px; */
+  /* background: #444; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage .ads-frame .ads-main .my-swiper .img-swiper {
+  display: block;
+  width: 100%;
+  height: 690px;
+  object-fit: cover;
+}
+
+.homepage .ads-frame .img-swiper .img-1 {
+  width: 1097px;
+}
+
+/* .homepage .ads-frame {
   margin-top: 100px;
   width: 100%;
   height: 690px;
@@ -354,7 +385,7 @@
   box-shadow: 0px -9px 90px rgb(215 215 255);
   transform: scale(1.7);
   overflow: hidden;
-}
+} */
 
 /* ACTIVE USERS */
 
@@ -401,21 +432,30 @@
   border-radius: 18px;
   background: #efefef;
   box-shadow: 5px 5px 25px 0 rgba(0, 0, 0, 0.25);
+  background: url("/public/icons/air-jordan.png") rgb(255, 253, 253);
 }
 
-.homepage .users-frame .user-img-card .card .product-sold-count {
+.homepage .users-frame .card .button-category {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.homepage .users-frame .card .product-sold-count {
+  margin-top: 39%;
+
   color: #000;
   font-family: "Work Sans";
-  font-size: 25px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 }
 
-.homepage .users-frame .user-img-card .card .product-sold-count .extra-design {
+.homepage .users-frame .card .product-sold-count .extra-design {
   color: #fc6b3f;
   font-family: "Work Sans";
-  font-size: 25px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -444,18 +484,13 @@
   background: #000;
 } */
 
-.homepage .users-frame .card .user-nick {
-  margin-top: 100px;
+.homepage .users-frame .card .button-category .user-nick {
   margin-left: 30px;
-  width: 100px;
-  height: 30px;
-
   color: #000;
   font-family: "Work Sans";
+  letter-spacing: 10px;
   font-size: 40px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 }
 
 /* .homepage .users-frame .user-img-card .card .user-nick {

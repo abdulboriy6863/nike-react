@@ -33,7 +33,7 @@ export default function NewDishes() {
   const history = useHistory();
   const searchCollectionHandler = (collection: ProductCollection) => {
     console.log("productCollection ishlayaptimi", collection);
-    history.push(`/products?collection=${collection}`);
+    history.push("/products", { collection });
   };
 
   //HANDLER
