@@ -45,63 +45,46 @@ export default function NewDishes() {
           <Box className={"category-title"}>Shop By Collection</Box>
           <Stack className="card-frame">
             {/* <CssVarsProvider> */}
-            <Box className="card-1-img">
-              <div className="card-img-text">
-                <Box className="collection-name">DISH</Box>
-                <Button
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.DISH)
-                  }
-                >
-                  <Box className="collection-link">
-                    <img src="/icons/nike-group59.svg" alt="" />
-                  </Box>
-                </Button>
-              </div>
-            </Box>
-            <Box className="card-2-img">
-              <div className="card-img-text">
-                <Box className="collection-name">SALAD</Box>
-                <Button
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.SALAD)
-                  }
-                >
-                  <Box className="collection-link">
-                    <img src="/icons/nike-group59.svg" alt="" />
-                  </Box>
-                </Button>
-              </div>
-            </Box>
-            <Box className="card-3-img">
-              <div className="card-img-text">
-                <Box className="collection-name">DRINK</Box>
+            <Button
+              onClick={() => searchCollectionHandler(ProductCollection.DISH)}
+            >
+              <Box className="card-1-img">
+                <div className="card-img-text">
+                  <Box className="collection-name">WOMEN</Box>
 
-                <Button
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.DRINK)
-                  }
-                >
                   <Box className="collection-link">
                     <img src="/icons/nike-group59.svg" alt="" />
                   </Box>
-                </Button>
-                {/* <Button
-                  variant="contained"
-                  color={
-                    productSearch.productCollection === ProductCollection.DISH
-                      ? "primary"
-                      : "secondary"
-                  }
-                  className="rotate"
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.DISH)
-                  }
-                >
-                  Dish
-                </Button> */}
-              </div>
-            </Box>
+                </div>
+              </Box>
+            </Button>
+            {/*  */}
+            <Button
+              onClick={() => searchCollectionHandler(ProductCollection.SALAD)}
+            >
+              <Box className="card-2-img">
+                <div className="card-img-text">
+                  <Box className="collection-name">MAN</Box>
+
+                  <Box className="collection-link">
+                    <img src="/icons/nike-group59.svg" alt="" />
+                  </Box>
+                </div>
+              </Box>
+            </Button>
+            <Button
+              onClick={() => searchCollectionHandler(ProductCollection.DRINK)}
+            >
+              <Box className="card-3-img">
+                <div className="card-img-text">
+                  <Box className="collection-name">KIDS</Box>
+
+                  <Box className="collection-link">
+                    <img src="/icons/nike-group59.svg" alt="" />
+                  </Box>
+                </div>
+              </Box>
+            </Button>
             {/* </CssVarsProvider> */}
           </Stack>
         </Stack>

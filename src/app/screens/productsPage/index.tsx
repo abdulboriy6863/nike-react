@@ -5,6 +5,7 @@ import ChosenProduct from "./ChosenProduct";
 import Products from "./Products";
 import "../../../css/products.css";
 import { CartItem } from "../../../lib/types/search";
+import Statistics from "./Statistics";
 
 interface ProductsPageProps {
   onAdd: (item: CartItem) => void;
@@ -16,6 +17,8 @@ export default function ProductsPage(props: ProductsPageProps) {
 
   return (
     <div className={"productspage"}>
+      <Statistics />
+
       <Switch>
         <Route path={`${products.path}/:productId`}>
           <ChosenProduct onAdd={onAdd} />

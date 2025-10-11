@@ -17,6 +17,7 @@ import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
+import FmdGoodIcon from "@mui/icons-material/FmdGood";
 
 /* reduxe slice selector */
 
@@ -111,7 +112,7 @@ export default function Products(props: ProductsProps) {
       <Container>
         <Stack className="main">
           <Stack className="top-title-input">
-            <Box className="title">Burak Restaurant</Box>
+            <Box className="title">Nike Collection</Box>
             <Stack className="input-butt-box">
               <Input
                 className="input"
@@ -274,7 +275,11 @@ export default function Products(props: ProductsProps) {
                               backgroundImage: `url(${imagePath})`,
                             }}
                           >
+                            {/* <Box className="card-brand-name">
+                              <img src="/img/NIKE.png" alt="" />
+                            </Box> */}
                             <div className="product-sale">{sizeVolume}</div>
+
                             <Stack className="view-basket-box">
                               <Button
                                 className="shop-basket"
@@ -341,9 +346,9 @@ export default function Products(props: ProductsProps) {
           </Stack>
         </Stack>
       </Container>
-      <div className="burak-img">
-        <Container>
-          <Stack className="main-burak-box">
+
+      <Container>
+        {/* <Stack className="main-burak-box">
             <Box className="title-burak-box">Our Family Brand</Box>
             <Stack className="br-img-boxes">
               <Stack className="burak-card">
@@ -367,9 +372,71 @@ export default function Products(props: ProductsProps) {
                 </Box>
               </Stack>
             </Stack>
+          </Stack> */}
+        <Stack className="main-burak-box">
+          <Box className="first-box"></Box>
+          <Box className="second-box">
+            Depoimentos de atletas <span className="second-box-span">Nike</span>
+          </Box>
+          <Stack className="third-box">
+            <Box className="third-box-box">
+              <p className="third-text-box">
+                {" "}
+                Uma vez que você calçar este tênis sentirá vontade de correr.
+                Uma vez que você correr com eles garanto que não irá se
+                decepcionar!
+              </p>
+              <Box className="third-box-box-in">
+                <p className="third-box-in-img">
+                  <img src="/img/girls-1.png" alt="" />
+                </p>
+                <p className="anna-name">Ana Beatriz </p>
+              </Box>
+            </Box>
+            <Box className="third-box-box">
+              <p className="third-text-box">
+                {" "}
+                Uma vez que você calçar este tênis sentirá vontade de correr.
+                Uma vez que você correr com eles garanto que não irá se
+                decepcionar!
+              </p>
+              <Box className="third-box-box-in">
+                <p className="third-box-in-img">
+                  <img src="/img/girls-1.png" alt="" />
+                </p>
+                <p className="anna-name">Ana Beatriz </p>
+              </Box>
+            </Box>
+          </Stack>{" "}
+          <Stack className="button-section">
+            <Box className="buttom-first">
+              <img src="/img/nike-zor.png" alt="" />
+            </Box>
+            <Box className="buttom-second">
+              <p>Adicione ao carrinho</p>
+            </Box>
           </Stack>
-        </Container>
-      </div>
+          <Stack className="button-sections">
+            <Box className="buttom-first">
+              <img src="/img/nike-naushnik.png" alt="" />
+            </Box>
+            <Box className="enterBoxes">
+              <p className="enter-box">Entre em contato com a gente!</p>
+              <p className="enter-boxs">
+                Entre em contato com a loja, queremos tirar suas dúvidas ouvir
+                <br></br>
+                suas criticas e sugestoes
+              </p>
+            </Box>
+            <Box className="buttom-second">
+              <FmdGoodIcon />
+              &nbsp;
+              <p> Adicione ao carrinho</p>
+            </Box>
+          </Stack>
+        </Stack>
+      </Container>
+
       <div className="adress">
         <Container>
           <Stack className="adress-area">

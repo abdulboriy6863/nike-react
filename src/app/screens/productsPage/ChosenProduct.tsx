@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Stack, Box } from "@mui/material";
+import { Container, Stack, Box, Badge } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Divider from "../../components/divider";
@@ -23,6 +23,7 @@ import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 /* reduxe slice selector */
 
@@ -74,9 +75,9 @@ export default function ChosenProduct(props: ChosenProductProps) {
 
   return (
     <div className={"chosen-product"}>
-      <Box className={"title"}>Product Detail</Box>
+      {/* <Box className={"title"}>Product Detail</Box> */}
       <Container className={"product-container"}>
-        <Stack className={"chosen-product-slider"}>
+        {/* <Stack className={"chosen-product-slider"}>
           <Swiper
             loop={true}
             spaceBetween={10}
@@ -138,6 +139,92 @@ export default function ChosenProduct(props: ChosenProductProps) {
               </Button>
             </div>
           </Box>
+        </Stack> */}
+
+        {/*  */}
+
+        <Stack className="chosen-product-sl">
+          <Box className="pr-name-box">
+            <strong className={"product-name"}>
+              {chosenProduct?.productName}
+            </strong>
+          </Box>
+          {/* <Box className="img-box">
+            <img src="/img/NIKE.png" alt="" />
+          </Box> */}
+          <Swiper
+            loop={true}
+            spaceBetween={10}
+            navigation={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="swiper-area"
+          >
+            {chosenProduct?.productImages.map((ele: string, index: number) => {
+              const imagePath = `${serverApi}/${ele}`;
+              return (
+                <SwiperSlide key={index}>
+                  <img className="slider-image" src={imagePath} />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+          <Stack className="cost-view">
+            <Box className="cost-box">
+              {" "}
+              <div className={"product-price"}>
+                <span>Price&nbsp; $</span>
+                <span>{chosenProduct.productPrice}</span>
+              </div>
+            </Box>
+            <Stack className="view-sold">
+              <Box className="view-box">
+                <Badge
+                  sx={{
+                    "& .MuiBadge-badge": {
+                      background: "#414A4C",
+                      color: "#fff",
+                      fontSize: "10px",
+                      minWidth: "18px",
+                      height: "18px",
+                      borderRadius: "9px",
+
+                      right: "-2px",
+                    },
+                  }}
+                  badgeContent={chosenProduct?.productViews ?? 0}
+                  // color="primary"
+                >
+                  <RemoveRedEyeIcon sx={{ mr: "1px" }} />
+                </Badge>
+              </Box>
+              <Box className="sold-count">
+                <span className="sold-counts">Sold Count &nbsp;</span>(
+                {chosenProduct.soldCount})
+              </Box>
+            </Stack>
+          </Stack>
+          <Stack className="buttom-box">
+            <Box className="button-title-box"> Press The Buttom To Add</Box>
+            <ArrowDownwardIcon className="icon-icon" />
+            <Button
+              className="adding-box"
+              variant="contained"
+              onClick={(e) => {
+                onAdd({
+                  _id: chosenProduct._id,
+                  quantity: 1,
+                  name: chosenProduct.productName,
+                  price: chosenProduct.productPrice,
+                  image: chosenProduct.productImages[0],
+                });
+                e.stopPropagation();
+              }}
+            >
+              <Box className="image-box">
+                {/* <img src="/Nike.ico" alt="" /> */}
+              </Box>
+            </Button>
+          </Stack>
         </Stack>
       </Container>
     </div>
