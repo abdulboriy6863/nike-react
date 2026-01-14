@@ -168,6 +168,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
               );
             })}
           </Swiper>
+
           <Stack className="cost-view">
             <Box className="cost-box">
               {" "}

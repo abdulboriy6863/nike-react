@@ -18,6 +18,7 @@ import { serverApi } from "../../../lib/config";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import CloseIcon from "@mui/icons-material/Close";
 
 /* reduxe slice selector */
 
@@ -44,7 +45,8 @@ export default function Products(props: ProductsProps) {
   const location = useLocation<CollectionState>();
 
   const initialCollection =
-    (location.state?.collection as ProductCollection) || ProductCollection.DISH;
+    (location.state?.collection as ProductCollection) ||
+    ProductCollection.WOMAN;
   const [collection, setCollection] =
     useState<ProductCollection>(initialCollection);
 
@@ -77,6 +79,15 @@ export default function Products(props: ProductsProps) {
       productSearch.search = "";
       setProductSearch({ ...productSearch });
     }
+  }, [searchText]);
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      productSearch.search = searchText;
+      setProductSearch({ ...productSearch });
+    }, 500); // 500ms delay
+
+    return () => clearTimeout(delayDebounceFn); // oldingi timeoutni tozalaydi
   }, [searchText]);
 
   /* HANDLER */
@@ -120,16 +131,14 @@ export default function Products(props: ProductsProps) {
                 type={"search"}
                 value={searchText}
                 onChange={(e) => setSearchtext(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") searchProductHandler();
-                }}
                 disableUnderline
                 sx={{
                   border: "none",
                   borderRadius: "8px",
-                  marginRight: "70px",
+                  marginRight: "px",
                 }}
               />
+
               <Button
                 className="searching-button"
                 variant={"contained"}
@@ -182,86 +191,51 @@ export default function Products(props: ProductsProps) {
                 <Button
                   variant="contained"
                   color={
-                    productSearch.productCollection === ProductCollection.DISH
+                    productSearch.productCollection === ProductCollection.WOMAN
                       ? "primary"
                       : "secondary"
                   }
                   className="rotate"
                   onClick={() =>
-                    searchCollectionHandler(ProductCollection.DISH)
+                    searchCollectionHandler(ProductCollection.WOMAN)
                   }
                 >
-                  Dish
+                  Woman
                 </Button>
 
                 <Button
                   variant="contained"
                   color={
-                    productSearch.productCollection === ProductCollection.SALAD
+                    productSearch.productCollection === ProductCollection.MAN
                       ? "primary"
                       : "secondary"
                   }
                   className="rotate"
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.SALAD)
-                  }
+                  onClick={() => searchCollectionHandler(ProductCollection.MAN)}
                 >
-                  Salad
+                  Man
                 </Button>
 
                 <Button
                   variant="contained"
                   color={
-                    productSearch.productCollection === ProductCollection.DRINK
+                    productSearch.productCollection === ProductCollection.KIDS
                       ? "primary"
                       : "secondary"
                   }
                   className="rotate"
                   onClick={() =>
-                    searchCollectionHandler(ProductCollection.DRINK)
+                    searchCollectionHandler(ProductCollection.KIDS)
                   }
                 >
-                  Drink{" "}
+                  Kids
                 </Button>
-                {/* <Button
-                  variant="contained"
-                  color={
-                    productSearch.productCollection ===
-                    ProductCollection.DESSERT
-                      ? "primary"
-                      : "secondary"
-                  }
-                  className="rotate"
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.DESSERT)
-                  }
-                >
-                  Desert
-                </Button> */}
-
-                {/* <Button
-                  variant="contained"
-                  color={
-                    productSearch.productCollection === ProductCollection.OTHER
-                      ? "primary"
-                      : "secondary"
-                  }
-                  className="rotate"
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.OTHER)
-                  }
-                >
-                  Other
-                </Button> */}
               </Stack>
               <Stack className="wrap-box">
                 {products.length !== 0 ? (
                   products.map((product: Product) => {
                     const imagePath = `${serverApi}/${product.productImages[0]}`;
-                    const sizeVolume =
-                      product.productCollection === ProductCollection.DRINK
-                        ? product.productVolume + "liter"
-                        : product.productSize + "size";
+
                     return (
                       <Stack className="product-img-box">
                         <Stack
@@ -278,7 +252,7 @@ export default function Products(props: ProductsProps) {
                             {/* <Box className="card-brand-name">
                               <img src="/img/NIKE.png" alt="" />
                             </Box> */}
-                            <div className="product-sale">{sizeVolume}</div>
+                            {/* <div className="product-sale">{sizeVolume}</div> */}
 
                             <Stack className="view-basket-box">
                               <Button

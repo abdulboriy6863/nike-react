@@ -46,7 +46,7 @@ export default function NewDishes() {
           <Stack className="card-frame">
             {/* <CssVarsProvider> */}
             <Button
-              onClick={() => searchCollectionHandler(ProductCollection.DISH)}
+              onClick={() => searchCollectionHandler(ProductCollection.WOMAN)}
             >
               <Box className="card-1-img">
                 <div className="card-img-text">
@@ -60,7 +60,7 @@ export default function NewDishes() {
             </Button>
             {/*  */}
             <Button
-              onClick={() => searchCollectionHandler(ProductCollection.SALAD)}
+              onClick={() => searchCollectionHandler(ProductCollection.MAN)}
             >
               <Box className="card-2-img">
                 <div className="card-img-text">
@@ -73,7 +73,7 @@ export default function NewDishes() {
               </Box>
             </Button>
             <Button
-              onClick={() => searchCollectionHandler(ProductCollection.DRINK)}
+              onClick={() => searchCollectionHandler(ProductCollection.KIDS)}
             >
               <Box className="card-3-img">
                 <div className="card-img-text">
@@ -88,73 +88,6 @@ export default function NewDishes() {
             {/* </CssVarsProvider> */}
           </Stack>
         </Stack>
-        {/* <Stack className={"main"}>
-          <Box className={"category-title"}>Shop By Collection</Box>
-          <Stack className={"card-frame"}>
-            <CssVarsProvider>
-              {newDishes.length !== 0 ? (
-                newDishes.map((product: Product) => {
-                  const imagePath = `${serverApi}/${product.productImages[0]}`;
-                  const sizeVolume =
-                    product.productCollection === ProductCollection.DRINK
-                      ? product.productVolume + "l"
-                      : product.productSize + " size ";
-                  console.log("ramslar:::::=>>", imagePath);
-
-                  return (
-                    <Card
-                      key={product._id}
-                      variant="outlined"
-                      className={"card"}
-                    >
-                      <CardOverflow>
-                        <div className="product-sale">{sizeVolume}</div>
-                        <AspectRatio ratio="1">
-                          <img src={imagePath} />
-                        </AspectRatio>
-                      </CardOverflow>
-
-                      <CardOverflow
-                        variant="soft"
-                        className={"product-details"}
-                      >
-                        <Stack className="info">
-                          <Stack flexDirection={"row"}>
-                            <Typography className={"title"}>
-                              {product.productName}
-                            </Typography>
-                            <Divider
-                              orientation="vertical"
-                              flexItem
-                              sx={{
-                                height: 24,
-                                backgroundColor: "#d9d9d9",
-                                mx: 1,
-                              }}
-                            />
-                            <Typography className={"price"}>
-                              {product.productPrice}
-                            </Typography>
-                          </Stack>
-                          <Stack>
-                            <Typography className={"views"}>
-                              {product.productViews}
-                              <VisibilityIcon
-                                sx={{ fontSize: 20, marginLeft: "5px" }}
-                              />
-                            </Typography>
-                          </Stack>
-                        </Stack>
-                      </CardOverflow>
-                    </Card>
-                  );
-                })
-              ) : (
-                <Box className="no-data">New products are not available</Box>
-              )}
-            </CssVarsProvider>
-          </Stack>
-        </Stack> */}
       </Container>
     </div>
   );

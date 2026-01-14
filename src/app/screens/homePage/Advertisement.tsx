@@ -23,7 +23,7 @@ export default function Advertisement() {
             pagination={{
               clickable: true,
             }}
-            modules={[Autoplay, Pagination, Navigation]}
+            modules={[Pagination, Navigation]}
           >
             <SwiperSlide className="img-1">
               <img src="/img/kskfallaldlk.png" alt="" />
