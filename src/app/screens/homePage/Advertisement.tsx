@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Pagination, Navigation } from "swiper";
 import { Stack } from "@mui/material";
 
 export default function Advertisement() {
